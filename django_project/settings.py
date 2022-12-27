@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-if@ppbd5)33$4(z71#7x(@u3@7a34+r0=-eb3a^78h__%&2692
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['keepdocker.azurewebsites.net','0.0.0.0','localhost']
+ALLOWED_HOSTS = ['54.166.23.109','keepdocker.azurewebsites.net','0.0.0.0','localhost']
 
 
 # Application definition
