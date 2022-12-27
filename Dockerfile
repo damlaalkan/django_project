@@ -1,5 +1,7 @@
+#Dockerfile
+
 # Pull base image
-FROM python:3.10.2-slim-bullseye
+FROM python:3.9.16-slim-bullseye
 
 # Set environment variables
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
@@ -10,13 +12,9 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /code
 
 # Install dependencies
+RUN apt-get update && apt-get upgrade -y && apt-get install gcc -y
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy project
-COPY . /code/
-
-FROM mcr.microsoft.com/appsvc/python:latest
-ENV PORT 8080
-EXPOSE 8080
-ENTRYPOINT ["gunicorn", "--timeout", "600", "--access-logfile", "'-'", "--error-logfile", "'-'", "--chdir=/opt/defaultsite", "application:app"]
+COPY . .
